@@ -1,0 +1,39 @@
+html {
+  background-color: lightgray;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-container {
+  display: flex;
+  margin: 0 20px;
+  align-items: center;
+}
+.interval-container {
+  display: flex;
+
+  align-items: center;
+}
+.time-container {
+  text-align: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+button {
+  padding: 5px 15px;
+  margin: 10px;
+  height: 30px;
+}
+h3 {
+  text-align: center;
+}
+.divider {
+  font-size: 50px;
+  text-align: center;
+  color: gray;
+}
