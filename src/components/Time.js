@@ -18,7 +18,7 @@ class Time extends React.Component {
     if (this.state.intervalId !== 0) {
       return;
     }
-    let intervalId = setInterval(this.decreaseTimer, 100);
+    let intervalId = setInterval(this.decreaseTimer, 1000);
 
     this.props.setIsPlaying(true);
     this.setState({
