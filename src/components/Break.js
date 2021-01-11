@@ -2,13 +2,13 @@ import React from "react";
 
 function Break(props) {
   function decrement() {
-    if (props.breakLength === 1) {
+    if (props.breakLength === 1 || props.isPlay) {
       return;
     }
     props.decreaseBreak();
   }
   function increment() {
-    if (props.breakLength === 30) {
+    if (props.breakLength === 30 || props.isPlay) {
       return;
     }
     props.increaseBreak();

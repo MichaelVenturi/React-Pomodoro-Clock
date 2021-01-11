@@ -2,13 +2,13 @@ import React from "react";
 
 function Session(props) {
   function decrement() {
-    if (props.sessionLength === 1) {
+    if (props.sessionLength === 1 || props.isPlay) {
       return;
     }
     props.decreaseSession();
   }
   function increment() {
-    if (props.sessionLength === 60) {
+    if (props.sessionLength === 60 || props.isPlay) {
       return;
     }
     props.increaseSession();

@@ -12,6 +12,7 @@ class App extends React.Component {
       breakLength: 5,
       sessionLength: 25, // default values for clock
       timerMinute: 25,
+      isPlaying: false,
     };
     this.onIncrementBreak = this.onIncrementBreak.bind(this);
     this.onDecrementBreak = this.onDecrementBreak.bind(this);
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.onToggleTimer = this.onToggleTimer.bind(this);
     this.onUpdateTimerMinute = this.onUpdateTimerMinute.bind(this);
     this.onResetTimer = this.onResetTimer.bind(this);
+    this.setIsPlaying = this.setIsPlaying.bind(this);
   }
 
   onIncrementBreak() {
@@ -82,6 +84,12 @@ class App extends React.Component {
     });
   }
 
+  setIsPlaying(isPlay) {
+    this.setState({
+      isPlay: isPlay,
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -89,12 +97,14 @@ class App extends React.Component {
           <h2>Pomodoro Clock</h2>
           <div className="row-container">
             <Break
+              isPlay={this.state.isPlay}
               breakLength={this.state.breakLength}
               increaseBreak={this.onIncrementBreak}
               decreaseBreak={this.onDecrementBreak}
             ></Break>
 
             <Session
+              isPlay={this.state.isPlay}
               sessionLength={this.state.sessionLength}
               increaseSession={this.onIncrementSession}
               decreaseSession={this.onDecrementSession}
@@ -106,6 +116,7 @@ class App extends React.Component {
             updateTimerMinute={this.onUpdateTimerMinute}
             toggleTimer={this.onToggleTimer}
             resetTimer={this.onResetTimer}
+            setIsPlaying={this.setIsPlaying}
           ></Time>
         </main>
       </div>
