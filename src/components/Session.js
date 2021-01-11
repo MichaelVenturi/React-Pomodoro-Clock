@@ -2,8 +2,7 @@ import React from "react";
 
 function Session(props) {
   function decrement() {
-    if (props.sessionLength === 10) {
-      // don't be lazy, at least 10 minutes
+    if (props.sessionLength === 1) {
       return;
     }
     props.decreaseSession();

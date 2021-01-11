@@ -18,6 +18,10 @@ class App extends React.Component {
 
     this.onIncrementSession = this.onIncrementSession.bind(this);
     this.onDecrementSession = this.onDecrementSession.bind(this);
+
+    this.onToggleTimer = this.onToggleTimer.bind(this);
+    this.onUpdateTimerMinute = this.onUpdateTimerMinute.bind(this);
+    this.onResetTimer = this.onResetTimer.bind(this);
   }
 
   onIncrementBreak() {
@@ -39,6 +43,7 @@ class App extends React.Component {
     this.setState((prevState) => {
       return {
         sessionLength: prevState.sessionLength + 1,
+        timerMinute: prevState.sessionLength + 1,
       };
     });
   }
@@ -46,7 +51,34 @@ class App extends React.Component {
     this.setState((prevState) => {
       return {
         sessionLength: prevState.sessionLength - 1,
+        timerMinute: prevState.sessionLength - 1,
       };
+    });
+  }
+
+  onToggleTimer(isSession) {
+    if (isSession) {
+      this.setState({
+        timerMinute: this.state.sessionLength,
+      });
+    } else {
+      this.setState({
+        timerMinute: this.state.breakLength,
+      });
+    }
+  }
+
+  onUpdateTimerMinute() {
+    this.setState((prevState) => {
+      return {
+        timerMinute: prevState.timerMinute - 1,
+      };
+    });
+  }
+
+  onResetTimer() {
+    this.setState({
+      timerMinute: this.state.sessionLength,
     });
   }
 
@@ -61,14 +93,20 @@ class App extends React.Component {
               increaseBreak={this.onIncrementBreak}
               decreaseBreak={this.onDecrementBreak}
             ></Break>
-            {/* <span className="divider">|</span> */}
+
             <Session
               sessionLength={this.state.sessionLength}
               increaseSession={this.onIncrementSession}
               decreaseSession={this.onDecrementSession}
             ></Session>
           </div>
-          <Time timerMinute={this.state.timerMinute}></Time>
+          <Time
+            timerMinute={this.state.timerMinute}
+            breakLength={this.state.breakLength}
+            updateTimerMinute={this.onUpdateTimerMinute}
+            toggleTimer={this.onToggleTimer}
+            resetTimer={this.onResetTimer}
+          ></Time>
         </main>
       </div>
     );
